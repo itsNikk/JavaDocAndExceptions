@@ -1,38 +1,51 @@
+/**
+ *
+ * test
+ * @author Filippo Bruni
+ * @version 1.0
+ */
 public class Main {
+
     /**
-     * Questo è il main dell'applicazione, ecc ecc....
-     * @param args - parametri in ingresso da riga di comando
+     * costruttore
      */
-    public static void main(String[] args) {
-        // simple comment
-        /*
-            Simple multiline comment
-         */
-
-        System.out.println(args[0]);
-
-        computeSumCosAndSin(1, 4);
+    public Main(){
+        System.out.println("asdadag");
     }
 
     /**
-     * Questo metodo si chiama <em>Foo<em/>
-     * <p>
-     * Questo metodo stampa una semplice stringa, che è <code>Test</code>
-     * </p>
-     *
-     * @param x il primo numero
-     * @param y il secondo numero
-     * @return la somma tra <code>x</code> e <code>y</code>
-     * @author Nicolò Buganza
-     * @author Roberto Rossi
-     * @throws IllegalArgumentException se x o y non sono positivi
-     * @see <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html#cos-double-">
-     *     Math.cos Doc</a>
-     * @see #main(String[])
-     * 
+     * Metodone gigantone che fa eseguire l'app.
+     * @param args input da linea di comando
      */
-    private static double computeSumCosAndSin(int x, int y)  {
-        System.out.println("Test");
-        return Math.cos(x) + Math.sin(y);
+    public static void main(String[] args) {
+        // commento
+        /*
+         *   commento multilnea
+         */
+
+
+        Foo(1, 4);
+
+    }
+
+    /**
+     * Commento <em>Javadoc<em/>
+     * questo metodo esegue la somma di due numeri, <strong>solo</strong> di due numeri.
+     *<p>
+     *     Quesdto metodo si ispira alla soluzione creata da Pippo al link che vedete sotto
+     *
+     *</p>
+     * @param a il primo numero
+     * @param b il secondo numero
+     * @return la somma tra a e b
+     * @author Nicolò Buganza
+     * @author Luca Rossi
+     * @see <a href="https://ioflood.com/blog/math-class-java/">Link all'implementazione</a>
+     * @see <a href="https://docs.oracle.com/javase/8/docs/api/java/lang/Math.html#sin-double-">
+     *     Math.sin official doc</a>
+     * @see #main(String[])
+     */
+    private static double Foo(int a, int b) {
+        return Math.sin(a + b);
     }
 }

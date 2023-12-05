@@ -1,62 +1,58 @@
 package Exceptions;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
 public class ExceptionsMain {
     public static void main(String[] args) {
         /*
-         * Padre di tutte = Throwable
-         * Sottoclassi principali
-         *   1) Error
-         * !!! 2) Exception
-         *       2.1) Eccezioni NON CONTROLLATE dal compilatore.
-         *                  di tipo RunTimeException => il compilatore NON forza la loro gestione
-         *       2.2) Eccezioni CONTROLLATE dal compilatore
-         *                   Tutti gli altri sottotipi di Exception => ilcompilatore FORZA la gestione dell'eccezione
+         *   Gestione condizioni malsane/patologiche del programma.
+         *   esempio: errori di input, dati non disponibili, dati invalidi, ecc
+         *
+         *   throw = un modulo/metodo GENERA un'eccezione quando si verifica una condizione anomala
+         *   catch = un modulo/metodo GESTISCE un'eccezione generata da qualche modulo/metodo
+         *
+         *   madre di tutte le Eccezioni = Throwable
+         *
          */
 
         int[] array = null;
         int index = 0;
         try {
-            index = array.length - 10;
+            index = array.length - Integer.MAX_VALUE;
             System.out.println(array[index]);
-            /*
-            asdasdas
-            asdasd
-            asdasdas
-
-             */
-        } catch (ArrayIndexOutOfBoundsException arrayExcpetion) {
-            System.out.println(arrayExcpetion.getMessage());
+        } catch (ArrayIndexOutOfBoundsException exception) {
+            if (index > array.length - 1) System.out.println(array[array.length - 1]);
             if (index < 0) System.out.println(array[0]);
-            else if (index > array.length - 1) System.out.println(array[array.length - 1]);
-        } catch (NullPointerException nullPointerException) {
-            System.out.println(nullPointerException.getMessage());
+        } catch (NullPointerException npe) {
             array = new int[5];
             for (int i = 0; i < array.length; i++) {
                 array[i] = i + 1;
             }
-            System.out.println(array[3]);
         }
 
-        /*
-         * Gestione:
-         *   1) scrivere "Eccezione 'divisione per zero' identifica"
-         *   2) scrivere -1 in console
-         *
-         * versione 2:
-         *   2.1) dividere per 1
-         * */
-
-        int res = 0;
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Inserisci NUMERO:> ");
+        int v = 0;
         try {
-            res = 5 / 0;
-            System.out.println(res);
-        } catch (ArithmeticException arithmeticException) {
-            System.out.println(arithmeticException.getMessage());
-            res = 5 / 1;
-            System.out.println(res);
+            v = scanner.nextInt();
+        } catch (InputMismatchException ime) {
+            System.out.print("Hai sbagliato, devi inserire un numero!");
+            try {
+                scanner.nextLine();
+                v = Integer.parseInt(scanner.next());
+            } catch (NumberFormatException e) {
+                System.out.println("Hai sbasdfagliato ancora. Chiudo il programma.");
+                System.exit(0);
+            }
         }
 
+        System.out.println(v);
 
-        
+        try {
+            double res = 5 / 0;
+        } catch (ArithmeticException arithmeticException){
+            System.out.println(arithmeticException.getMessage());
+        }
     }
 }
