@@ -51,7 +51,7 @@ public class ExceptionsMain {
 
         try {
             double res = 5 / 0;
-        } catch (ArithmeticException arithmeticException){
+        } catch (ArithmeticException arithmeticException) {
             System.out.println(arithmeticException.getMessage());
         }
     }

@@ -11,15 +11,19 @@ public class Main {
 
         System.out.print("Inserisci una stringa:> ");
         String str = s.nextLine();
-        System.out.print("Inserisci un numero intero:> ");
+        System.out.print("Inserisci un intero:> ");
         int index = s.nextInt();
 
-        if (index >= 0 && index < str.length()) {
+
+        if (isValidIndex(index, str)) {
             char c = str.charAt(index);
             System.out.println("Il carattere in posizione " + index + " della stringa " + str + " è " + c);
         } else {
-            System.out.println("Non esiste un carattere nella posizione" + index);
+            System.out.println("Non c'è un carattere in posizione" + index);
         }
+    }
 
+    public static boolean isValidIndex(int index, String s) {
+        return index >= 0 && index < s.length();
     }
 }
