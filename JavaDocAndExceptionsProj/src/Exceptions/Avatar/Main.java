@@ -11,6 +11,9 @@ public class Main {
         RDA rda = new RDA(1, 100, 5);
         RaidNaVi raid = new RaidNaVi(avatars, rda);
 
-        raid.eseguiRaid();
+        for (int i = 0; i < 100; i++) {
+            System.out.println("----- RAID NUMERO " + (i+1) + " -----");
+            raid.eseguiRaid();
+        }
     }
 }

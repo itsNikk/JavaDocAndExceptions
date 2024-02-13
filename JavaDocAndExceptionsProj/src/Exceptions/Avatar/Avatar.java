@@ -18,17 +18,17 @@ public class Avatar {
 
     public void attacca(RDA rda) throws ArmaMalfunzionanteException, AttaccoFallitoException, DifesaInsufficienteException, UnobtaniumEsauritoException {
         // Simula l'attacco Na'vi alla postazione RDA
-        if (Math.random() < 0.8) {
+        if (Math.random() < 0.7) {
             // 80% di probabilità di successo
-            if (Math.random() < 0.9) {
+            if (Math.random() < 0.8) {
                 // 90% di probabilità di un attacco riuscito
                 System.out.println(nome + " attacca con successo la postazione RDA!");
                 rda.difendi(esperienza);
             } else {
-                throw new ArmaMalfunzionanteException(nome + "'s arma è malfunzionante!");
+                throw new ArmaMalfunzionanteException("L'arma di " + nome + " è malfunzionante!");
             }
         } else {
-            throw new AttaccoFallitoException(nome + "'s attacco non ha successo nel neutralizzare la postazione RDA.");
+            throw new AttaccoFallitoException("L'attacco di " + nome + " non ha successo nel neutralizzare la postazione RDA.");
         }
     }
 }
