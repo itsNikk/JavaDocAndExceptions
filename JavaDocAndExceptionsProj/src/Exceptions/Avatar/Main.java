@@ -1,19 +1,29 @@
 package Exceptions.Avatar;
 
+import java.util.Random;
+
 public class Main {
-    public static void main(String[] args) {
+
+    public static final int RAID_NUM = 100;
+
+    public static void main(String[] args) throws InterruptedException {
         Avatar[] avatars = {
                 new Avatar("Neytiri", "Arco", 90),
                 new Avatar("Jake", "Coltello", 80),
-                // Aggiungere altri Avatar se necessario
+                // Aggiungere altri Avatar a piacere
         };
 
-        RDA rda = new RDA(1, 100, 5);
-        RaidNaVi raid = new RaidNaVi(avatars, rda);
+        Random r = new Random();
+        RDA rda = new RDA(new Coordinata(), r.nextInt(100, 130), 2);
+        for (int i = 0; i < RAID_NUM; i++) {
+            RaidNaVi raid = new RaidNaVi(avatars, rda);
 
-        for (int i = 0; i < 100; i++) {
-            System.out.println("----- RAID NUMERO " + (i+1) + " -----");
+            System.out.println("----- RAID NUMERO " + (i + 1) + " -----");
+            System.out.println(rda);
+            System.out.println(avatars[0]);
+            System.out.println(avatars[1]);
             raid.eseguiRaid();
+            Thread.sleep(5000);
         }
     }
 }

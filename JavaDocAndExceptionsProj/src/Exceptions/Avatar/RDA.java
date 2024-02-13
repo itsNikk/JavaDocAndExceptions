@@ -4,23 +4,23 @@ import Exceptions.Avatar.CustomExceptions.DifesaInsufficienteException;
 import Exceptions.Avatar.CustomExceptions.UnobtaniumEsauritoException;
 
 public class RDA {
-    private int posizione;
+    private Coordinata posizione;
     private int difesa;
     private int miniereUnobtanium;
 
-    public RDA(int posizione, int difesa, int miniereUnobtanium) {
+    public RDA(Coordinata posizione, int difesa, int miniereUnobtanium) {
         this.posizione = posizione;
         this.difesa = difesa;
         this.miniereUnobtanium = miniereUnobtanium;
     }
 
-    public void difendi(int attacco) throws DifesaInsufficienteException, UnobtaniumEsauritoException {
+    public void difendi(int performedAttackForce) throws DifesaInsufficienteException, UnobtaniumEsauritoException {
         // Simula la difesa della postazione RDA
-        if (difesa >= attacco) {
+        if (difesa >= performedAttackForce) {
             System.out.println("La postazione RDA ha resistito all'attacco Na'vi!");
-            difesa -= attacco;
+            difesa -= performedAttackForce;
             if (miniereUnobtanium > 0) {
-                // Riduci il quantitativo di unobtanium solo se disponibile
+                System.out.println("La postazione RDA prosegue con il mining di Unobtanium");
                 miniereUnobtanium--;
             } else {
                 throw new UnobtaniumEsauritoException("Le miniere di unobtanium sono esaurite!");
@@ -28,5 +28,30 @@ public class RDA {
         } else {
             throw new DifesaInsufficienteException("La difesa della postazione RDA non è sufficiente!");
         }
+    }
+
+    public Coordinata getPosizione() {
+        return posizione;
+    }
+
+    public void setPosizione(Coordinata posizione) {
+        this.posizione = posizione;
+    }
+
+    public int getDifesa() {
+        return difesa;
+    }
+
+    public void setDifesa(int difesa) {
+        this.difesa = difesa;
+    }
+
+    @Override
+    public String toString() {
+        return "RDA{" +
+                "posizione=" + posizione +
+                ", difesa=" + difesa +
+                ", miniereUnobtanium=" + miniereUnobtanium +
+                '}';
     }
 }

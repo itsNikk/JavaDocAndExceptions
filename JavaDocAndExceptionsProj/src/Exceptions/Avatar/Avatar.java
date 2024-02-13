@@ -6,6 +6,8 @@ import Exceptions.Avatar.CustomExceptions.DifesaInsufficienteException;
 import Exceptions.Avatar.CustomExceptions.UnobtaniumEsauritoException;
 
 public class Avatar {
+    private static final double PERFORM_ATTACK_PROB = 0.5;
+    private static final double ATTACK_SUCCESS_PROB = 0.8;
     private String nome;
     private String arma;
     private int esperienza;
@@ -17,11 +19,8 @@ public class Avatar {
     }
 
     public void attacca(RDA rda) throws ArmaMalfunzionanteException, AttaccoFallitoException, DifesaInsufficienteException, UnobtaniumEsauritoException {
-        // Simula l'attacco Na'vi alla postazione RDA
-        if (Math.random() < 0.7) {
-            // 80% di probabilità di successo
-            if (Math.random() < 0.8) {
-                // 90% di probabilità di un attacco riuscito
+        if (Math.random() < PERFORM_ATTACK_PROB) {
+            if (Math.random() < ATTACK_SUCCESS_PROB) {
                 System.out.println(nome + " attacca con successo la postazione RDA!");
                 rda.difendi(esperienza);
             } else {
@@ -30,5 +29,14 @@ public class Avatar {
         } else {
             throw new AttaccoFallitoException("L'attacco di " + nome + " non ha successo nel neutralizzare la postazione RDA.");
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Avatar{" +
+                "nome='" + nome + '\'' +
+                ", arma='" + arma + '\'' +
+                ", esperienza=" + esperienza +
+                '}';
     }
 }
