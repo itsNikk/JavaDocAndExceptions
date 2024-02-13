@@ -24,7 +24,7 @@ public class Avatar {
                 System.out.println(nome + " attacca con successo la postazione RDA!");
                 rda.difendi(esperienza);
             } else {
-                throw new ArmaMalfunzionanteException("L'arma di " + nome + " è malfunzionante!");
+                throw new ArmaMalfunzionanteException("L'arma di " + nome + " non funziona bene!");
             }
         } else {
             throw new AttaccoFallitoException("L'attacco di " + nome + " non ha successo nel neutralizzare la postazione RDA.");
