@@ -18,11 +18,11 @@ public class Avatar {
         this.esperienza = esperienza;
     }
 
-    public void attacca(RDA rda) throws ArmaMalfunzionanteException, AttaccoFallitoException, DifesaInsufficienteException, UnobtaniumEsauritoException {
+    public void attacca(PostazioneRDA postazioneRda) throws ArmaMalfunzionanteException, AttaccoFallitoException, DifesaInsufficienteException, UnobtaniumEsauritoException {
         if (Math.random() < PERFORM_ATTACK_PROB) {
             if (Math.random() < ATTACK_SUCCESS_PROB) {
                 System.out.println(nome + " attacca con successo la postazione RDA!");
-                rda.difendi(esperienza);
+                postazioneRda.difendi(esperienza);
             } else {
                 throw new ArmaMalfunzionanteException("L'arma di " + nome + " non funziona bene!");
             }

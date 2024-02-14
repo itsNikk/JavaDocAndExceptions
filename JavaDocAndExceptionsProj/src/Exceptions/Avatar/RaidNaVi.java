@@ -5,29 +5,35 @@ import Exceptions.Avatar.CustomExceptions.AttaccoFallitoException;
 import Exceptions.Avatar.CustomExceptions.DifesaInsufficienteException;
 import Exceptions.Avatar.CustomExceptions.UnobtaniumEsauritoException;
 
+import java.util.Random;
+
 public class RaidNaVi {
     private Avatar[] avatars;
-    private RDA rda;
+    private PostazioneRDA postazioneRda;
 
-    public RaidNaVi(Avatar[] avatars, RDA rda) {
+    private final Random gen = new Random();
+
+    public RaidNaVi(Avatar[] avatars, PostazioneRDA postazioneRda) {
         this.avatars = avatars;
-        this.rda = rda;
+        this.postazioneRda = postazioneRda;
     }
 
     public void eseguiRaid() {
         for (Avatar avatar : avatars) {
             try {
-                avatar.attacca(rda);
+                avatar.attacca(postazioneRda);
             } catch (ArmaMalfunzionanteException | AttaccoFallitoException e) {
                 System.out.println("Errore: " + e.getMessage());
             } catch (UnobtaniumEsauritoException unobtaniumEsauritoException) {
                 System.out.println("Errore: " + unobtaniumEsauritoException.getMessage());
                 System.out.println("La postazione RDA cambia posizione per continuare la ricerca di unobtanium");
-                rda.setPosizione(rda.getPosizione().Add(1));
+                postazioneRda.setPosizione(postazioneRda.getPosizione().Add(1));
+                postazioneRda.setMiniereUnobtanium(gen.nextInt(1, 11));
+
             } catch (DifesaInsufficienteException e) {
                 System.out.println("Errore: " + e.getMessage());
-                rda.setPosizione(rda.getPosizione().Add(3));
-                rda.setDifesa(100);
+                postazioneRda.setPosizione(postazioneRda.getPosizione().Add(3));
+                postazioneRda.setDifesa(100);
             }
         }
     }

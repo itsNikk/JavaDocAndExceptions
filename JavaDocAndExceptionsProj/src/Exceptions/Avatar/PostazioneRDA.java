@@ -3,12 +3,12 @@ package Exceptions.Avatar;
 import Exceptions.Avatar.CustomExceptions.DifesaInsufficienteException;
 import Exceptions.Avatar.CustomExceptions.UnobtaniumEsauritoException;
 
-public class RDA {
+public class PostazioneRDA {
     private Coordinata posizione;
     private int difesa;
     private int miniereUnobtanium;
 
-    public RDA(Coordinata posizione, int difesa, int miniereUnobtanium) {
+    public PostazioneRDA(Coordinata posizione, int difesa, int miniereUnobtanium) {
         this.posizione = posizione;
         this.difesa = difesa;
         this.miniereUnobtanium = miniereUnobtanium;
@@ -44,6 +44,14 @@ public class RDA {
 
     public void setDifesa(int difesa) {
         this.difesa = difesa;
+    }
+
+    public int getMiniereUnobtanium() {
+        return miniereUnobtanium;
+    }
+
+    public void setMiniereUnobtanium(int miniereUnobtanium) {
+        this.miniereUnobtanium = miniereUnobtanium;
     }
 
     @Override
