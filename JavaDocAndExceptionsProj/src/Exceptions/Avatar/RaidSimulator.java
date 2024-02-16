@@ -7,18 +7,18 @@ import Exceptions.Avatar.CustomExceptions.UnobtaniumEsauritoException;
 
 import java.util.Random;
 
-public class RaidNaVi {
+public class RaidSimulator {
     private Avatar[] avatars;
     private PostazioneRDA postazioneRda;
 
     private final Random gen = new Random();
 
-    public RaidNaVi(Avatar[] avatars, PostazioneRDA postazioneRda) {
+    public RaidSimulator(Avatar[] avatars, PostazioneRDA postazioneRda) {
         this.avatars = avatars;
         this.postazioneRda = postazioneRda;
     }
 
-    public void eseguiRaid() {
+    public void performRaid() {
         for (Avatar avatar : avatars) {
             try {
                 avatar.attacca(postazioneRda);
@@ -29,7 +29,6 @@ public class RaidNaVi {
                 System.out.println("La postazione RDA cambia posizione per continuare la ricerca di unobtanium");
                 postazioneRda.setPosizione(postazioneRda.getPosizione().Add(1));
                 postazioneRda.setMiniereUnobtanium(gen.nextInt(1, 11));
-
             } catch (DifesaInsufficienteException e) {
                 System.out.println("Errore: " + e.getMessage());
                 postazioneRda.setPosizione(postazioneRda.getPosizione().Add(3));
