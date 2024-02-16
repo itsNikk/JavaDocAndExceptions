@@ -15,6 +15,7 @@ public class Main {
 
         Random r = new Random();
         PostazioneRDA postazioneRda = new PostazioneRDA(new Coordinata(), r.nextInt(100, 130), 2);
+        
         for (int i = 0; i < RAID_NUM; i++) {
             RaidNaVi raid = new RaidNaVi(avatars, postazioneRda);
 
