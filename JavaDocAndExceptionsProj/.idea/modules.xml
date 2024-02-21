@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/JavaDocAndExceptions.iml" filepath="$PROJECT_DIR$/JavaDocAndExceptions.iml" />
+      <module fileurl="file://$PROJECT_DIR$/LocalTests/LocalTests.iml" filepath="$PROJECT_DIR$/LocalTests/LocalTests.iml" />
     </modules>
   </component>
 </project>
